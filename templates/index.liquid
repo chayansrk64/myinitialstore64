@@ -1,1 +1,14 @@
-<h1>Coading with Robby!</h1>
+<h2>{{ collections['frontpage'].title }}</h2>
+
+<div class="collection_products">
+{% for product in collections['frontpage'].products %}
+    <div class="collection_product">
+        <a href="{{ product.url }}">
+        <img src="{{ product.featured_image | image_url:width: 400 }}" alt="">
+        <h3> {{ product.title }} </h3>
+        <p> {{ product.price | money }} </p>
+        {{- product.title | link_to: product.url }}
+        </a>
+    </div>
+{% endfor %}
+</div>

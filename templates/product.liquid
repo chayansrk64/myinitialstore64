@@ -1,0 +1,35 @@
+<div class="product_page">
+
+    <div class="product_image">
+        <img src="{{ product.featured_image |  image_url }}" alt="">
+    </div>
+
+    <div class="product_details">
+
+        <h2 style="font-size: 32px;">{{ product.title }}</h2>
+        <p style="margin:10px;">{{ product.price | money }}</p>
+       
+
+        {% form 'product', product %}
+        <select name="id" style="margin-top: 10px;">
+            {% for variant in product.variants %}
+            <option value="{{ variant.id }}">
+                {{ variant.title }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <div style="margin: 10px 0px;">
+            <button type="submit" style="padding: 10px 100px; margin-bottom: 10px">Add to Cart</button> 
+            <button type="submit"  style="padding: 10px 100px;">Buy it Now</button>
+        </div>
+        
+        {% endform %}
+
+        <div style="margin-top: 20px;">
+            {{ product.description }}
+        </div>
+
+    </div>
+
+</div>
