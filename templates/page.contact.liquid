@@ -1,0 +1,49 @@
+<h2>{{ page.title }}</h2>
+<div>
+    {{ page.content }}
+</div>
+
+{% form 'contact' %}
+{% comment %} {{ form.errors | default_errors }} {% endcomment %}
+
+{% comment %} contact form {% endcomment %}
+<div class="container_form">
+    
+<div style="display: flex; gap:10px; justify-content: space-between; width: 100%">
+    <div class="name input_div" style="width: 100%;">
+        <input type="text" name="contact[first_name]" placeholder="Name" id="first-name" class="input_field" />
+    </div>
+    
+    <div class="email input_div" style="width: 100%">
+        <input type="email" name="contact[email]" placeholder="Email" id="email" />
+    </div>
+</div>
+    
+    <div class="phone input_div" style="margin:15px 0;">
+        <input type="tel" name="contact[phone]" placeholder="Phone Number" id="phone" />
+    </div>
+    
+    <div class="message input_div">
+        <textarea name="contact[body]" placeholder="Message" id="message" style="width: 100%; height: 150px"></textarea>
+    </div>
+    
+    <div class="submit" style="margin-top:15px;">
+        <input type="submit" value="Send" style="padding: 10px 100px;" />
+    </div>
+    
+</div>
+
+
+{% endform %}
+
+{%  style  %} 
+.container_form {
+    width: 50%;
+    margin: 0 auto;
+}
+.input_div input {
+    padding: 10px;
+    width: 100%
+}
+ 
+{% endstyle %}
