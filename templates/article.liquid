@@ -1,0 +1,51 @@
+<h2>{{ article.title }}</h2>
+<p>Published at: {{ article.created_at | date: format: 'abbreviated_date' }}</p>
+<div style="margin:50px 0px;">
+    {{ article.content }}
+</div>
+
+{% comment %} for feedback {% endcomment %}
+<div style="width:30%;">
+
+{% if article.comments_enabled? %}
+    <h2>Leave a Comment</h2>
+
+    {% comment %} step 2:  rendering comment here after getting the comment {% endcomment %}
+    <div style="margin:30px 0px;">
+    {% for comment in article.comments %}
+        <div>
+            <h4>{{ comment.author }}</h4>
+            <p>{{ comment.email }}</p>
+            <div>
+                 {{ comment.content }} 
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    {% comment %} step 1: create a comment here {% endcomment %}
+
+    {% form 'new_comment' article %}
+        {% form 'new_comment', article %}
+            {{ form.errors | default_errors }}
+          
+            <div class="name">
+              <input type="text" name="comment[author]" style="padding:10px; width:100%;" placeholder="Name" value="{{ form.author }}">
+            </div>
+          
+            <div class="email">
+              <input type="email" name="comment[email]" style="padding:10px; margin:15px 0px; width: 100%;" placeholder="Email" value="{{ form.email }}">
+            </div>
+          
+            <div class="comment">
+              <textarea name="comment[body]" style="padding:10px; width:100%; height: 100px;" placeholder="Comment" >{{ form.body }}</textarea>
+            </div>
+          
+            <div class="submit">
+              <input type="submit" value="Comment" style="padding: 10px 100px; margin-top:15px;">
+            </div>
+          {% endform %}
+          
+    {% endform %}
+{% endif %}
+
+</div>
