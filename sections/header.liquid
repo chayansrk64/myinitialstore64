@@ -1,5 +1,5 @@
-<header>
-    <div class="header_nav header">
+<header class="header">
+    <div class="header_nav">
     <div>
         <h1> {{ shop.name }} </h1>
     </div>
@@ -26,23 +26,24 @@
 </header>
 
 
-{% comment %} from section style will be implemented in style tag {% endcomment %}
+{% comment %} from section style will be implemented in style tag (settings stuff) {% endcomment %}
 <style>
-     .header {
+    .header {
         background: {{ section.settings.bg }}
     }
 </style>
 
-{% comment %} styles outside from settings {% endcomment %}
+{% comment %} styles outside from settings (non settings stuff) {% endcomment %}
+
 {% stylesheet %}
-    .header {
-        padding: 10px;
-    }
+    /* .header {
+        padding: 20px;
+    } */
 {% endstylesheet %}
 
 
 {%  javascript  %} 
-    console.log("Hey console!")
+    console.log("Hey javascript!")
 {% endjavascript %} 
 
 {%  schema  %} 
