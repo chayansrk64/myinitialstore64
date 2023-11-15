@@ -13,11 +13,12 @@
     </div>
 
     <div>
+        {% if settings.search_bar %}
         <form action="/search">
             <input type="search" name="q">
             <button type="submit">Search</button>
         </form>
-        
+        {% endif %}
     </div>
 
     </div>

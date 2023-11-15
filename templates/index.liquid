@@ -1,3 +1,6 @@
+{% comment %} banner form snippets {% endcomment %}
+{% render 'banner' %}
+
 <h2>{{ collections['frontpage'].title }}</h2>
 
 <div class="collection_products">
@@ -12,7 +15,10 @@
         </a>
     </div> {% endcomment %}
 
+    {% comment %} product from product-item.liquid {% endcomment %}
     {% render 'product-item', product: product %}
+
+
 
 {% endfor %}
 </div>
