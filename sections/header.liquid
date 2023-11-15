@@ -1,0 +1,65 @@
+<header>
+    <div class="header_nav header">
+    <div>
+        <h1> {{ shop.name }} </h1>
+    </div>
+    <div>
+        <ul class="header_ul">  
+            <!-- Main menu -->
+            {% for link in linklists.main-menu.links%}
+             <li>{{ link.title | link_to: link.url }} </li> 
+            {%endfor %}
+        </ul>
+    </div>
+
+    <div>
+        {% if section.settings.search_bar %}
+        <form action="/search">
+            <input type="search" name="q">
+            <button type="submit">Search</button>
+        </form>
+        {% endif %}
+    </div>
+
+    </div>
+
+</header>
+
+
+{% comment %} from section style will be implemented in style tag {% endcomment %}
+<style>
+     .header {
+        background: {{ section.settings.bg }}
+    }
+</style>
+
+{% comment %} styles outside from settings {% endcomment %}
+{% stylesheet %}
+    .header {
+        padding: 10px;
+    }
+{% endstylesheet %}
+
+
+{%  javascript  %} 
+    console.log("Hey console!")
+{% endjavascript %} 
+
+{%  schema  %} 
+{
+    "name": "Header",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "search_bar",
+            "label": "show search bar",
+            "default": true
+        },
+        {
+            "type": "color",
+            "id": "bg",
+            "label": "Background color"
+        }
+    ]
+}
+{% endschema %}

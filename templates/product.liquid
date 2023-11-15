@@ -8,6 +8,7 @@
 
         <h2 style="font-size: 32px;">{{ product.title }}</h2>
         <p style="margin:10px;">{{ product.price | money }}</p>
+        {% comment %} <p style="margin:10px;">{{ product.total_amount | money }}</p> {% endcomment %}
 
         {% form 'product', product %}
         <select name="id" style="margin-top: 10px;">

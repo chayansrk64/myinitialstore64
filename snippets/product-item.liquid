@@ -2,7 +2,11 @@
     <a href="{{ product.url }}">
     <img src="{{ product.featured_image | image_url:width: 400 }}" alt="">
     <h3> {{ product.title }} </h3>
-    <p> {{ product.price | money }} </p>
+    <div style="display: flex; justify-content:center; gap:15px;">
+        <p> {{ product.price | money }} </p>
+        <del>{{ product.compare_at_price | money }}</del>
+    </div>
     {{- product.title | link_to: product.url }}
+    
     </a>
 </div>
